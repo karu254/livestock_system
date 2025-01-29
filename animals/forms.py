@@ -4,7 +4,7 @@ from .models import Animal
 class AnimalForm(forms.ModelForm):
     class Meta:
         model = Animal
-        fields = ['tag_number', 'name', 'birth_date', 'gender', 'stage']
+        fields = ['tag_number', 'name', 'gender', 'breed', 'date_of_birth']
         widgets = {
-            'birth_date': forms.DateInput(attrs={'type': 'date'}),
+            'date_of birth': forms.DateInput(attrs={'type': 'date'}),
         }

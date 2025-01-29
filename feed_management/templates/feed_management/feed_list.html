@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Feed Records{% endblock %}
+{% block content %}
+<h2>Feed Records</h2>
+<table>
+    <tr>
+        <th>Animal</th>
+        <th>Feed Type</th>
+        <th>Amount (kg)</th>
+        <th>Cost</th>
+        <th>Date</th>
+    </tr>
+    {% for record in feed_records %}
+    <tr>
+        <td>{{ record.animal.tag_number }}</td>
+        <td>{{ record.feed_type.name }}</td>
+        <td>{{ record.amount_kg }}</td>
+        <td>{{ record.cost }}</td>
+        <td>{{ record.date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

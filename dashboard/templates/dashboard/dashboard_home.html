@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+
+<h2>Farm Overview</h2>
+
+<div class="dashboard-cards">
+    <div class="card">
+        <h3>Today's Milk Production</h3>
+        <p>{{ daily_milk }} Liters</p>
+    </div>
+    <div class="card">
+        <h3>Today's Expenses</h3>
+        <p>Ksh {{ daily_expense }}</p>
+    </div>
+    <div class="card">
+        <h3>Today's Sales</h3>
+        <p>Ksh {{ daily_sales }}</p>
+    </div>
+</div>
+
+<h3>Animal Summary</h3>
+<ul>
+    <li>Total Animals: {{ total_animals }}</li>
+    <li>Pregnant Cows: {{ pregnant_animals }}</li>
+    <li>Male Cows: {{ male_animals }}</li>
+    <li>Female Cows: {{ female_animals }}</li>
+</ul>
+
+<a href="{% url 'reports' %}" class="btn">View Reports</a>
+{% endblock %}

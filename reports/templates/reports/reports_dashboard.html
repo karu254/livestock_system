@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}Reports Dashboard{% endblock %}
+{% block content %}
+<h2>Reports Dashboard</h2>
+
+<!-- Summary Cards -->
+<div class="summary-cards">
+    <div class="card">
+        <h3>Total Milk Produced</h3>
+        <p>{{ total_milk }} Liters</p>
+    </div>
+    <div class="card">
+        <h3>Average Milk Production</h3>
+        <p>{{ average_milk }} Liters/Cow</p>
+    </div>
+    <div class="card">
+        <h3>Total Cows</h3>
+        <p>{{ total_cows }}</p>
+    </div>
+</div>
+
+<!-- Gender Distribution -->
+<h3>Gender Distribution</h3>
+<canvas id="genderChart"></canvas>
+
+<!-- Age Group Distribution -->
+<h3>Age Group Distribution</h3>
+<canvas id="ageGroupChart"></canvas>
+
+<!-- Milk Production Trend -->
+<h3>Milk Production Trend (Last 7 Days)</h3>
+<canvas id="milkTrendChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Gender Distribution Chart
+    const genderData = {
+        labels: [{% for gender in cows_by_gender %}"{{ gender.gender }}",{% endfor %}],
+        datasets: [{
+            label: 'Cows by Gender',
+            data: [{% for gender in cows_by_gender %}{{ gender.count }},{% endfor %}],
+            backgroundColor: ['#4caf50', '#f44336'],
+        }]
+    };
+    new Chart(document.getElementById('genderChart'), {
+        type: 'pie',
+        data: genderData,
+    });
+
+    // Age Group Distribution Chart
+    const ageGroupData = {
+        labels: [{% for group in age_groups %}"{{ group.age_group }}",{% endfor %}],
+        datasets: [{
+            label: 'Cows by Age Group',
+            data: [{% for group in age_groups %}{{ group.count }},{% endfor %}],
+            backgroundColor: ['#2196f3', '#ff9800', '#9c27b0'],
+        }]
+    };
+    new Chart(document.getElementById('ageGroupChart'), {
+        type: 'bar',
+        data: ageGroupData,
+    });
+
+    // Milk Production Trend Chart
+    const milkTrendData = {
+        labels: {{ last_7_days|safe }},
+        datasets: [{
+            label: 'Milk Production (Liters)',
+            data: {{ daily_trend|safe }},
+            borderColor: '#3e95cd',
+            fill: false,
+        }]
+    };
+    new Chart(document.getElementById('milkTrendChart'), {
+        type: 'line',
+        data: milkTrendData,
+    });
+</script>
+{% endblock %}

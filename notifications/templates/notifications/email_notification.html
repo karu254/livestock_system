@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static%}
+<html>
+<body>
+    <h3>Today's Notifications</h3>
+    <p>Here are the events for today:</p>
+    <ul>
+        {% for notification in notifications %}
+        <li>
+            <strong>{{ notification.event_type }}</strong> for <strong>{{ notification.animal.tag_number }}</strong>: {{ notification.message }}
+        </li>
+        {% endfor %}
+    </ul>
+    <p>Visit the <a href="{{ site_url }}/notifications/">notifications page</a> for details.</p>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Sales Records{% endblock %}
+{% block content %}
+<h2>Sales Records</h2>
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Animal</th>
+        <th>Quantity</th>
+        <th>Price Per Unit</th>
+        <th>Total Amount</th>
+        <th>Buyer</th>
+        <th>Date</th>
+    </tr>
+    {% for record in sales_records %}
+    <tr>
+        <td>{{ record.product_type.name }}</td>
+        <td>{{ record.animal.tag_number if record.animal else 'N/A' }}</td>
+        <td>{{ record.quantity }}</td>
+        <td>{{ record.price_per_unit }}</td>
+        <td>{{ record.total_amount }}</td>
+        <td>{{ record.buyer_name }}</td>
+        <td>{{ record.date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

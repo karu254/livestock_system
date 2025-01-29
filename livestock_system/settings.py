@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'notifications',
     'milk_tracking',
     'accounts',
-
+    'expenses',
+    'sales',
+    'dashboard',
+    'reports',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +64,7 @@ ROOT_URLCONF = 'livestock_system.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'], #template directory
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

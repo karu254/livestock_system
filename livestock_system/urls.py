@@ -24,4 +24,9 @@ urlpatterns = [
     path('milk_tracking/', include('milk_tracking.urls')), # URLs for milk_tracking app
     path('accounts/', include('accounts.urls')),    # URLs for accounts app
     path('', include('animals.urls')), # Redirect root URL to animals app as default
+    path('expenses/', include('expenses.urls')), # URLs for expenses app
+    path('sales/', include('sales.urls')), # URLs for sales app
+    path('dashboard/', include('dashboard.urls')), # URLs for dashboard app
+    path('reports/', include('reports.urls')), # URLs for reports app
+    
 ]

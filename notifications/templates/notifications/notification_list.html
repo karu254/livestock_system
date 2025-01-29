@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Notifications{% endblock %}
+
+{% block content %}
+<h2>Notifications</h2>
+
+<form method="get" class="mb-4">
+    <label for="filter">Filter by Event Type:</label>
+    <select name="filter" id="filter" onchange="this.form.submit()">
+        <option value="">All</option>
+        <option value="IMMUNIZATION" {% if filter_type == 'IMMUNIZATION' %}selected{% endif %}>Immunization</option>
+        <option value="PREGNANCY" {% if filter_type == 'PREGNANCY' %}selected{% endif %}>Pregnancy</option>
+        <option value="SALE" {% if filter_type == 'SALE' %}selected{% endif %}>Sale</option>
+        <option value="BIRTH" {% if filter_type == 'BIRTH' %}selected{% endif %}>Birth</option>
+    </select>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Animal</th>
+            <th>Event</th>
+            <th>Message</th>
+            <th>Due Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for notification in notifications %}
+        <tr class="{% if notification.due_date|date:"Y-m-d" == today %}bg-yellow-100{% elif notification.due_date|date:"Y-m-d" < today %}bg-red-100{% else %}bg-green-100{% endif %}">
+            <td>{{ notification.animal.tag_number }}</td>
+            <td>{{ notification.get_event_type_display }}</td>
+            <td>{{ notification.message }}</td>
+            <td>{{ notification.due_date }}</td>
+            <td>
+                {% if notification.is_resolved %}
+                Resolved
+                {% else %}
+                <a href="{% url 'resolve_notification' notification.id %}">Mark as Resolved</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No notifications found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination">
+    {% if notifications.has_previous %}
+    <a href="?page={{ notifications.previous_page_number }}{% if filter_type %}&filter={{ filter_type }}{% endif %}">&laquo; Previous</a>
+    {% endif %}
+    {% for page_num in notifications.paginator.page_range %}
+    <a href="?page={{ page_num }}{% if filter_type %}&filter={{ filter_type }}{% endif %}" class="{% if notifications.number == page_num %}active{% endif %}">{{ page_num }}</a>
+    {% endfor %}
+    {% if notifications.has_next %}
+    <a href="?page={{ notifications.next_page_number }}{% if filter_type %}&filter={{ filter_type }}{% endif %}">Next &raquo;</a>
+    {% endif %}
+</div>
+{% endblock %}

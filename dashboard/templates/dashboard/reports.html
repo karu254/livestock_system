@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+
+<h2>Farm Reports</h2>
+
+<canvas id="milkChart"></canvas>
+<canvas id="salesChart"></canvas>
+<canvas id="expenseChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const dailyMilk = JSON.parse('{{ daily_milk|escapejs }}');
+    const dailySales = JSON.parse('{{ daily_sales|escapejs }}');
+    const dailyExpenses = JSON.parse('{{ daily_expenses|escapejs }}');
+
+    new Chart(document.getElementById('milkChart'), {
+        type: 'line',
+        data: {
+            labels: dailyMilk.map(item => item.date),
+            datasets: [{ label: 'Milk Production', data: dailyMilk.map(item => item.total), borderColor: 'blue', fill: false }]
+        }
+    });
+
+    new Chart(document.getElementById('salesChart'), {
+        type: 'bar',
+        data: {
+            labels: dailySales.map(item => item.date),
+            datasets: [{ label: 'Sales', data: dailySales.map(item => item.total), backgroundColor: 'green' }]
+        }
+    });
+
+    new Chart(document.getElementById('expenseChart'), {
+        type: 'bar',
+        data: {
+            labels: dailyExpenses.map(item => item.date),
+            datasets: [{ label: 'Expenses', data: dailyExpenses.map(item => item.total), backgroundColor: 'red' }]
+        }
+    });
+</script>
+{% endblock %}

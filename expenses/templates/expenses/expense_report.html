@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Expense Report{% endblock %}
+{% block content %}
+<h2>Expense Report</h2>
+<h3>Daily Expenses</h3>
+<ul>
+    {% for expense in daily_expenses %}
+    <li>{{ expense.category.name }}: {{ expense.amount }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Monthly Expenses</h3>
+<ul>
+    {% for expense in monthly_expenses %}
+    <li>{{ expense.category.name }}: {{ expense.amount }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Yearly Expenses</h3>
+<ul>
+    {% for expense in yearly_expenses %}
+    <li>{{ expense.category.name }}: {{ expense.amount }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

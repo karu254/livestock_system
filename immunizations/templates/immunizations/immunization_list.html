@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Immunizations{% endblock %}
+{% block content %}
+<h2>Immunizations</h2>
+<a href="{% url 'add_immunization' %}" class="btn btn-primary">Add New Immunization</a>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Purpose</th>
+        <th>Dosage</th>
+        <th>Recommended Age Group</th>
+        <th>Recommended Gender</th>
+    </tr>
+    {% for immunization in immunizations %}
+    <tr>
+        <td>{{ immunization.name }}</td>
+        <td>{{ immunization.purpose }}</td>
+        <td>{{ immunization.dosage }}</td>
+        <td>{{ immunization.recommended_age_group }}</td>
+        <td>{{ immunization.recommended_gender }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

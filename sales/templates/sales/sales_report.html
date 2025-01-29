@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Sales Report{% endblock %}
+{% block content %}
+<h2>Sales Report</h2>
+<h3>Daily Sales</h3>
+<ul>
+    {% for sale in daily_sales %}
+    <li>{{ sale.product_type.name }}: {{ sale.total_amount }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Monthly Sales</h3>
+<ul>
+    {% for sale in monthly_sales %}
+    <li>{{ sale.product_type.name }}: {{ sale.total_amount }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Yearly Sales</h3>
+<ul>
+    {% for sale in yearly_sales %}
+    <li>{{ sale.product_type.name }}: {{ sale.total_amount }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

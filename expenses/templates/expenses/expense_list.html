@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Expense Records{% endblock %}
+{% block content %}
+<h2>Expense Records</h2>
+<table>
+    <tr>
+        <th>Category</th>
+        <th>Animal</th>
+        <th>Amount</th>
+        <th>Payment Method</th>
+        <th>Date</th>
+        <th>Description</th>
+    </tr>
+    {% for record in expenses %}
+    <tr>
+        <td>{{ record.category.name }}</td>
+        <td>{{ record.animal.tag_number if record.animal else 'N/A' }}</td>
+        <td>{{ record.amount }}</td>
+        <td>{{ record.payment_method }}</td>
+        <td>{{ record.date }}</td>
+        <td>{{ record.description }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

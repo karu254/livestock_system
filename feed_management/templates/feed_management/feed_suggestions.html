@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Feed Suggestions{% endblock %}
+{% block content %}
+<h2>Feed Suggestions</h2>
+<table>
+    <tr>
+        <th>Age Group</th>
+        <th>Suggested Feeds</th>
+    </tr>
+    {% for group in age_groups %}
+    <tr>
+        <td>{{ group.age_group }}</td>
+        <td>
+            {% for feed in feed_types %}
+                <p>{{ feed.name }}</p>
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

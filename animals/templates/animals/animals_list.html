@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Animal List{% endblock %}
+{% block content %}
+<h2>Animal List</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Tag Number</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Breed</th>
+            <th>Age Group</th>
+            <th>Stage</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for animal in animals %}
+        <tr>
+            <td>{{ animal.tag_number }}</td>
+            <td>{{ animal.name }}</td>
+            <td>{{ animal.get_gender_display }}</td>
+            <td>{{ animal.breed }}</td>
+            <td>{{ animal.age_group }}</td>
+            <td>{{ animal.get_stage_display }}</td>
+            <td><a href="{% url 'animal_detail' animal.id %}">View</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7">No animals found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

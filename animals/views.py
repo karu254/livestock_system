@@ -1,29 +1,28 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Animal
-from .forms import AnimalForm   
-from django.contrib.auth.decorators import login_required   
+from .forms import AnimalForm
 
-# Create your views here.
 @login_required
-def index(request):
-    animals = Animal.objects.all() # Retrieve all animals from the database
-    return render(request, 'animals/index.html', {'animals': animals})
+def animals_list(request):
+    animals = Animal.objects.filter(is_active=True).order_by('date_of_birth')
+    return render(request, 'animals/animals_list.html', {'animals': animals})
 
 @login_required
 def add_animal(request):
-    if request.method == 'POST':
+    if request.method == 'POST': # Form was submitted
         form = AnimalForm(request.POST)
         if form.is_valid():
-            animal = form.save(commit=False)
-            animal.created_by = request.user # Track who added the record
-            animal.save()
-            return redirect('animals_home')
+            animal = form.save(commit=False) # Don't save to database yet
+            animal.added_by = request.user
+            animal.save() # Now save
+            return redirect('animal_list') # Redirect to list of animals
     else:
         form = AnimalForm()
-    return render(request, 'animals/add_animal.html', {'form': form})
-
+    return render(request, 'animals/animal_form.html', {'form': form})
 
 @login_required
-def animal_details(request, id):
-    animal = get_object_or_404(Animal, id=id)
-    return render(request, 'animals/animal_details.html', {'animal': animal})
+def animal_detail(request, pk): # pk is the primary key of the animal
+    animal = get_object_or_404(Animal, pk=pk) # Get animal by primary key
+    return render(request, 'animals/animal_detail.html', {'animal': animal}) # Pass animal to template
+
