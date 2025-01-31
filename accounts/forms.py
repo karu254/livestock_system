@@ -11,4 +11,4 @@ class UserRegistrationForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['role']
+        fields = ["bio", "phone_number", "address"] # Add more fields as needed

@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from dashboard.views import dashboard_view
+from accounts.views import custom_login
 
 urlpatterns = [
     path('admin/', admin.site.urls), # Admin site
@@ -28,5 +30,9 @@ urlpatterns = [
     path('sales/', include('sales.urls')), # URLs for sales app
     path('dashboard/', include('dashboard.urls')), # URLs for dashboard app
     path('reports/', include('reports.urls')), # URLs for reports app
+    #testing
+    path('', dashboard_view, name='home'),
+    path('dashboard/', dashboard_view, name='dashboard'),
+    path('login/', custom_login, name='login'),
     
 ]

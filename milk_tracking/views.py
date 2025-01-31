@@ -36,4 +36,4 @@ def milk_records(request):
         'milk_data': milk_data
     }
 
-    return render(request, 'milk/milk_records.html', context)
+    return render(request, 'milk_tracking/milk_list.html', context)

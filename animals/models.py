@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now
+from django.conf import settings    
 
 class Animal(models.Model):
     GENDER_CHOICES = [
@@ -23,7 +24,8 @@ class Animal(models.Model):
     age_group = models.CharField(max_length=50, blank=True)
     stage = models.CharField(max_length=10, choices=STAGE_CHOICES, default='CALF')
     is_active = models.BooleanField(default=True)
-    added_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    # added_by = models.ForeignKey(User, on_delete=models.CASCADE, default=1) # added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    added_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)    
     added_on = models.DateTimeField(default=now)
 
     def save(self, *args, **kwargs):

@@ -1,0 +1,170 @@
+[
+    {
+      "model": "animals.animal",
+      "pk": 1,
+      "fields": {
+        "name": "Bella",
+        "breed": "Holstein",
+        "birth_date": "2023-02-15",
+        "status": "Healthy",
+        "category": "Dairy"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 2,
+      "fields": {
+        "name": "Max",
+        "breed": "Jersey",
+        "birth_date": "2022-07-10",
+        "status": "Pregnant",
+        "category": "Dairy"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 3,
+      "fields": {
+        "name": "Rocky",
+        "breed": "Guernsey",
+        "birth_date": "2021-05-25",
+        "status": "Sick",
+        "category": "Dairy"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 4,
+      "fields": {
+        "name": "Luna",
+        "breed": "Brown Swiss",
+        "birth_date": "2020-09-12",
+        "status": "Healthy",
+        "category": "Dairy"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 5,
+      "fields": {
+        "name": "Daisy",
+        "breed": "Ayrshire",
+        "birth_date": "2023-01-05",
+        "status": "Injured",
+        "category": "Dairy"
+      }
+    },
+  
+    {
+      "model": "animals.animal",
+      "pk": 6,
+      "fields": {
+        "name": "Thunder",
+        "breed": "Angus",
+        "birth_date": "2019-11-20",
+        "status": "Healthy",
+        "category": "Beef"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 7,
+      "fields": {
+        "name": "Ranger",
+        "breed": "Hereford",
+        "birth_date": "2018-06-30",
+        "status": "Healthy",
+        "category": "Beef"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 8,
+      "fields": {
+        "name": "Blaze",
+        "breed": "Limousin",
+        "birth_date": "2021-03-15",
+        "status": "Sick",
+        "category": "Beef"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 9,
+      "fields": {
+        "name": "Shadow",
+        "breed": "Simmental",
+        "birth_date": "2017-08-22",
+        "status": "Retired",
+        "category": "Beef"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 10,
+      "fields": {
+        "name": "Bolt",
+        "breed": "Charolais",
+        "birth_date": "2020-12-10",
+        "status": "Healthy",
+        "category": "Beef"
+      }
+    },
+  
+    {
+      "model": "animals.animal",
+      "pk": 11,
+      "fields": {
+        "name": "Spark",
+        "breed": "Brahman",
+        "birth_date": "2022-04-18",
+        "status": "Healthy",
+        "category": "Work"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 12,
+      "fields": {
+        "name": "Titan",
+        "breed": "Shorthorn",
+        "birth_date": "2019-02-27",
+        "status": "Injured",
+        "category": "Work"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 13,
+      "fields": {
+        "name": "Brutus",
+        "breed": "Highland",
+        "birth_date": "2021-07-14",
+        "status": "Healthy",
+        "category": "Work"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 14,
+      "fields": {
+        "name": "Hercules",
+        "breed": "Texas Longhorn",
+        "birth_date": "2018-10-03",
+        "status": "Retired",
+        "category": "Work"
+      }
+    },
+    {
+      "model": "animals.animal",
+      "pk": 15,
+      "fields": {
+        "name": "Zeus",
+        "breed": "Watusi",
+        "birth_date": "2020-01-29",
+        "status": "Healthy",
+        "category": "Work"
+      }
+    }
+  ]
+  

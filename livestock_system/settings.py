@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-rd!-oi(q$pfz4i40$fn=o461u57%3-nb3v$av=z!wi-p%o5_yf
 DEBUG = True
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = 'accounts.CustomUser' #custom user model
 
 
 # Application definition
@@ -134,7 +135,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_URL = '/accounts/login/' #redirects for unauthenticated users
-LOGIN_REDIRECT_URL = '/' #redirects for authenticated users(after login)
+LOGIN_REDIRECT_URL = 'dashboard' #redirects for authenticated users(after login)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
